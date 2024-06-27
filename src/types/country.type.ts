@@ -1,11 +1,13 @@
 export type Country = {
+  [key: string]: unknown;
+
   capital: string[];
   cca3: string;
   flags: {
     png: string;
     svg: string;
   };
-  isVisited: boolean;
+  isVisited?: boolean;
   name: {
     common: string;
     official: string;

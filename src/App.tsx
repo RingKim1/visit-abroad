@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getCountries } from "./api/getCountries";
 import styled from "styled-components";
 import CountryList from "./components/CountryList";
-import { Country } from "./types/country";
+import { Country } from "./types/country.type";
 
 const App: React.FC = () => {
   const [countries, setCountries] = useState<Country[]>([]);

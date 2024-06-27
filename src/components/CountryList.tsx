@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import CountryCard from "./CountryCard";
 import React from "react";
-import { Country } from "../types/country";
+import { Country } from "../types/country.type";
 
 type CountryListProps = {
   listTitle: string;

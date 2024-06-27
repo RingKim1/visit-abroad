@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Country } from "../types/country";
+import { Country } from "../types/country.type";
 
 type CountryCardProps = {
   country: Country;
