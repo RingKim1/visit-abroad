@@ -20,7 +20,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country, setCountries }) => {
 
   return (
     <Li
-      $visited={country.isVisited}
+      $visited={country.isVisited ?? false}
       onClick={() => toggleVisited(country.cca3)}
     >
       <Img src={country.flags.png} alt={`${country.name.common} flag`} />
