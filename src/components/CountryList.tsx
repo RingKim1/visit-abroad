@@ -1,7 +1,19 @@
 import styled from "styled-components";
 import CountryCard from "./CountryCard";
+import React from "react";
+import { Country } from "../types/country";
 
-const CountryList = ({ listTitle, countries, setCountries }) => {
+type CountryListProps = {
+  listTitle: string;
+  countries: Country[];
+  setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
+};
+
+const CountryList: React.FC<CountryListProps> = ({
+  listTitle,
+  countries,
+  setCountries,
+}) => {
   return (
     <Container>
       <h1>{listTitle}</h1>

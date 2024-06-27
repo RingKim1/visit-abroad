@@ -1,7 +1,14 @@
+import React from "react";
 import styled from "styled-components";
+import { Country } from "../types/country";
 
-const CountryCard = ({ country, setCountries }) => {
-  const toggleVisited = (cca3) => {
+type CountryCardProps = {
+  country: Country;
+  setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
+};
+
+const CountryCard: React.FC<CountryCardProps> = ({ country, setCountries }) => {
+  const toggleVisited = (cca3: string): void => {
     setCountries((countries) =>
       countries.map((country) =>
         country.cca3 === cca3
@@ -12,7 +19,10 @@ const CountryCard = ({ country, setCountries }) => {
   };
 
   return (
-    <Li visited={country.isVisited} onClick={() => toggleVisited(country.cca3)}>
+    <Li
+      $visited={country.isVisited}
+      onClick={() => toggleVisited(country.cca3)}
+    >
       <Img src={country.flags.png} alt={`${country.name.common} flag`} />
       <H3>{country.name.common}</H3>
       <p>{country.capital}</p>
@@ -22,7 +32,7 @@ const CountryCard = ({ country, setCountries }) => {
 
 export default CountryCard;
 
-const Li = styled.li<{ visited: boolean }>`
+const Li = styled.li<{ $visited: boolean }>`
   width: 200px;
   height: 150px;
 
@@ -34,7 +44,7 @@ const Li = styled.li<{ visited: boolean }>`
 
   cursor: pointer;
 
-  border: ${({ visited }) => (visited ? "1px solid yellow" : "none")};
+  border: ${({ $visited }) => ($visited ? "1px solid yellow" : "none")};
 `;
 
 const Img = styled.img`

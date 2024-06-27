@@ -2,22 +2,25 @@ import React, { useEffect, useState } from "react";
 import { getCountries } from "./api/getCountries";
 import styled from "styled-components";
 import CountryList from "./components/CountryList";
+import { Country } from "./types/country";
 
-const App = () => {
-  const [countries, setCountries] = useState<any[]>([]);
+const App: React.FC = () => {
+  const [countries, setCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchCountries = async () => {
+    const fetchCountries = async (): Promise<void> => {
       try {
-        const data = await getCountries();
-        const countriesWithVisited = data.map((country) => ({
-          ...country,
-          isVisited: false,
-        }));
+        const data: Country[] = await getCountries();
+        const countriesWithVisited: Country[] = data.map(
+          (country: Country) => ({
+            ...country,
+            isVisited: false,
+          })
+        );
         setCountries(countriesWithVisited);
-      } catch (err) {
+      } catch (err: any) {
         setError(err.message);
       } finally {
         setLoading(false);
@@ -32,8 +35,12 @@ const App = () => {
 
   // console.log(countries);
 
-  const visitedCountries = countries.filter((country) => country.isVisited);
-  const yetVisitedCountries = countries.filter((country) => !country.isVisited);
+  const visitedCountries: Country[] = countries.filter(
+    (country: Country) => country.isVisited
+  );
+  const yetVisitedCountries: Country[] = countries.filter(
+    (country: Country) => !country.isVisited
+  );
 
   return (
     <MainContainer>
